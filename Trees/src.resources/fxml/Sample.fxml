@@ -1,8 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1550.0" style="-fx-background-color: #58C6C7;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.education.mkh.trees.controllers.SampleController">
+   <children>
+      <Pane layoutX="-3.0" layoutY="-1.0" prefHeight="794.0" prefWidth="1558.0" style="-fx-background-color: #F59175;">
+         <children>
+            <Pane layoutX="395.0" layoutY="140.0" prefHeight="631.0" prefWidth="1128.0" style="-fx-background-color: #58C6C7;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Canvas fx:id="canvas" height="631.0" width="1128.0" />
+                  <ImageView fx:id="clickRight" fitHeight="59.0" fitWidth="63.0" layoutX="1050.0" layoutY="557.0" visible="false">
+                     <image>
+                        <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="clickLeft" fitHeight="59.0" fitWidth="63.0" layoutX="11.0" layoutY="558.0" rotate="180.0" visible="false">
+                     <image>
+                        <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="395.0" layoutY="30.0" prefHeight="90.0" prefWidth="1128.0" style="-fx-background-color: #58C6C7;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <TextField fx:id="fieldForPrintingSet" alignment="CENTER" editable="false" prefHeight="90.0" prefWidth="1128.0" style="-fx-background-color: #58C6C7;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane layoutX="-2.0" layoutY="-2.0" prefHeight="794.0" prefWidth="365.0" style="-fx-background-color: #58C6C7;">
+         <children>
+            <Label fx:id="menuTitle" alignment="CENTER" layoutX="30.0" layoutY="30.0" prefHeight="90.0" prefWidth="305.0" style="-fx-background-color: #F59175;" text="Збалансовані дерева" textAlignment="CENTER">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Pane fx:id="menuWithTreeTasks" layoutX="2.0" layoutY="133.0" prefHeight="659.0" prefWidth="363.0" style="-fx-background-color: #58C6C7;">
+               <children>
+                  <Pane layoutX="30.0" layoutY="7.0" prefHeight="629.0" prefWidth="50.0" style="-fx-background-color: #F59175;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <ImageView fx:id="clickInsert" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="8.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_insert_30px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="clickDelete" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="84.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_Delete_16px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="clickSearch" fitHeight="39.0" fitWidth="38.0" layoutX="6.0" layoutY="167.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_search_24px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="clickMakeListOutOfTrees" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="246.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_more_50px.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="327.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_list_24px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <TextField fx:id="fieldInsert" alignment="CENTER" layoutX="120.0" layoutY="7.0" prefHeight="50.0" prefWidth="213.0" promptText="Вставити" style="-fx-background-color: #F59175;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextField>
+                  <TextField fx:id="fieldDelete" alignment="CENTER" layoutX="120.0" layoutY="87.0" prefHeight="50.0" prefWidth="213.0" promptText="Видалити" style="-fx-background-color: #F59175;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextField>
+                  <TextField fx:id="fieldSearch" alignment="CENTER" layoutX="120.0" layoutY="167.0" prefHeight="50.0" prefWidth="213.0" promptText="Знайти " style="-fx-background-color: #F59175;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </TextField>
+                  <Button fx:id="buttonMakeListOutOfTree" alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="247.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="У список" textAlignment="CENTER">
+                     <font>
+                        <Font name="Times New Roman" size="24.0" />
+                     </font>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Button>
+                  <Pane layoutX="120.0" layoutY="327.0" prefHeight="305.0" prefWidth="213.0">
+                     <children>
+                        <Button fx:id="buttonChooseTree2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Вибрати дерево " textAlignment="CENTER">
+                           <font>
+                              <Font name="Times New Roman" size="24.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <Pane fx:id="menuChoosingInkTreeInTasksPane" layoutY="80.0" prefHeight="217.0" prefWidth="213.0" visible="false">
+                           <children>
+                              <Button fx:id="buttonChooseBinaryTree" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Бінарне " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Times New Roman" size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                              <Button fx:id="buttonChooseRRBTree" alignment="CENTER" contentDisplay="CENTER" layoutY="80.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Червоно-чорне " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Times New Roman" size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                              <Button fx:id="buttonChoosePersistentRBTree" alignment="CENTER" contentDisplay="CENTER" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Персистентне ч-ч" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Times New Roman" size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="startedMenuForChosingTypeOfTree" layoutX="2.0" layoutY="133.0" prefHeight="659.0" prefWidth="363.0" style="-fx-background-color: #58C6C7;">
+               <children>
+                  <Pane layoutX="120.0" layoutY="7.0" prefHeight="305.0" prefWidth="213.0">
+                     <children>
+                        <Button fx:id="buttonChooseTreeInStartMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Вибрати дерево " textAlignment="CENTER">
+                           <font>
+                              <Font name="Times New Roman" size="24.0" />
+                           </font>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Button>
+                        <Pane fx:id="menuChoosingTreesStartMenu" layoutY="80.0" prefHeight="217.0" prefWidth="213.0" visible="false">
+                           <children>
+                              <Button fx:id="buttonChooseBinaryTree1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Бінарне " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Times New Roman" size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                              <Button fx:id="buttonChooseRRBTree1" alignment="CENTER" contentDisplay="CENTER" layoutY="80.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Червоно-чорне " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Times New Roman" size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                              <Button fx:id="buttonChoosePersistentRBTree1" alignment="CENTER" contentDisplay="CENTER" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="213.0" style="-fx-background-color: #F59175;" text="Персистентне ч-ч" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Times New Roman" size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="30.0" layoutY="7.0" prefHeight="629.0" prefWidth="50.0" style="-fx-background-color: #F59175;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <ImageView fx:id="clickChooseTreeStartMenu" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="8.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_list_24px.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+   </children>
 </AnchorPane>
-
