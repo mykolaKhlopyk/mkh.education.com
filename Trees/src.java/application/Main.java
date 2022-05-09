@@ -2,6 +2,8 @@ package application;
 	
 import java.io.IOException;
 
+import com.education.mkh.trees.models.RBTree;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -25,6 +27,14 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		launch(args);
+		//launch(args);
+		RBTree<Integer> tree=new RBTree<Integer>();
+		tree.insert(5);
+		tree.insert(3);
+		tree.insert(2);
+		tree.insert(1);
+		tree.insert(0);
+		tree.print();
+		
 	}
 }
