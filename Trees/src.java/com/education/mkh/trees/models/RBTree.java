@@ -7,8 +7,9 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>{
 	protected RBTreeNode<T> leaf;
 	
 	public RBTree(){
-		this.root=null;
+		
 		this.leaf=new RBTreeNode<T>();
+		this.root=leaf;
 		leaf.setColorBlack();
 	}
 	
@@ -22,7 +23,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>{
 	
 	@Override
 	public boolean insert(T key) {
-		if (this.root == null) {
+		if (this.root == leaf) {
 			this.root = new  RBTreeNode<T>(key, this.leaf, this.leaf);
 			this.root.setColorBlack();
 			return true;
@@ -54,7 +55,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>{
 			}
 		}
 		clearCopy(this.root);
-		System.out.println(this.leaf.getColor());
+		//System.out.println(this.leaf.getColor());
 	
 	
 		return true;
@@ -202,4 +203,41 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>{
 		printNodeWithRecursion(current.getLeft(), n + 1);
 	}
 
+	public boolean checkSonsForColor(NodeWithTwoChilds<T> current) {
+
+		if (current == this.leaf) {
+			return true;
+		}
+		if (current.getColor() == TREE_COLOR.RED) {
+			if (current.getLeft().getColor() == TREE_COLOR.RED || current.getRight().getColor() == TREE_COLOR.RED) {
+				return false;
+			}
+		}
+		return checkSonsForColor(current.getLeft()) && checkSonsForColor(current.getRight());
+
+	}
+
+	public int checkNumberOfBlackNodes(NodeWithTwoChilds<T> current) {
+
+		if (current == this.leaf) {
+			return 1;
+		}
+		int left = checkNumberOfBlackNodes(current.getLeft());
+		int right = checkNumberOfBlackNodes(current.getRight());
+		if (left == -1 || right == -1) {
+			return -1;
+		}
+		if (current.getColor() == TREE_COLOR.RED) {
+			if (left == right) {
+				return left;
+			}
+			return -1;
+		} else {
+			if (left == right) {
+				return left + 1;
+			}
+			return -1;
+		}
+
+	}
 }
