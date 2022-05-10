@@ -1,11 +1,14 @@
 package com.education.mkh.trees.models;
 
-public abstract class NodeWithTwoChilds<T> implements PersistentClonable<T> {
+import java.util.Iterator;
+
+public abstract class NodeWithTwoChilds<T> implements PersistentClonable<T>, Iterator{
 	protected T key;
 	protected NodeWithTwoChilds<T> left;
 	protected NodeWithTwoChilds<T> right;
 	protected NodeWithTwoChilds<T> parent;
 	protected boolean isCloned;
+	protected boolean isLeaf=false;
 
 	public NodeWithTwoChilds(T key, NodeWithTwoChilds<T> leaf) {
 		this.key = key;
@@ -83,6 +86,33 @@ public abstract class NodeWithTwoChilds<T> implements PersistentClonable<T> {
 		y.left = this;
 		this.parent = y;
 	}
+
+	protected NodeWithTwoChilds<T> min_son() {
+		NodeWithTwoChilds<T> current = this;
+		while (!current.getLeft().isLeaf) {
+			current = current.getLeft();
+		}
+		return current;
+	}
+	@Override
+	public boolean hasNext() {
+		if (this.right.isLeaf && (this.parent==null ||this.parent.isLeaf)) {
+			return false;
+		}
+		return true;
+	}
+	@Override
+	public Iterator next() {
+		if (!this.right.isLeaf) {
+			return this.right.min_son();
+		}
+		if (this.parent!=null && !this.parent.isLeaf) {
+			return this.parent;
+		}
+		throw new IndexOutOfBoundsException();
+
+	}
+
 }
 
 class BinaryTreeNode<T> extends NodeWithTwoChilds<T> {
@@ -111,6 +141,7 @@ class RBTreeNode<T> extends NodeWithTwoChilds<T> {
 	public RBTreeNode() {
 		this(null, null);
 		this.color=TREE_COLOR.BLACK;
+		this.isLeaf=true;
 	}
 	
 	public RBTreeNode(T key, NodeWithTwoChilds<T> leaf, NodeWithTwoChilds<T> parent) {
@@ -119,6 +150,7 @@ class RBTreeNode<T> extends NodeWithTwoChilds<T> {
 		color = TREE_COLOR.RED;
 		this.key = key;
 		this.parent = parent;
+		this.isLeaf=false;
 	}
 
 	public RBTreeNode(T key, NodeWithTwoChilds<T> leaf) {
@@ -181,4 +213,6 @@ class RBTreeNode<T> extends NodeWithTwoChilds<T> {
 			this.right.parent = this;
 		}
 	}
+
+	
 }

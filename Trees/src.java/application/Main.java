@@ -1,7 +1,9 @@
 package application;
 	
 import java.io.IOException;
+import java.util.Iterator;
 
+import com.education.mkh.trees.models.NodeWithTwoChilds;
 import com.education.mkh.trees.models.RBTree;
 
 import javafx.application.Application;
@@ -25,6 +27,14 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		RBTree<Integer> tree=new RBTree<Integer>();
+		
+		Iterator<Integer> it=tree.iterator();
+		while (it.hasNext()) {
+			Integer key =  it.next();
+			System.out.print(key+" ");
+		}
+		
 		launch(args);	
 	}
 }

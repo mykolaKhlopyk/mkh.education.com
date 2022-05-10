@@ -12,6 +12,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		this.leaf=new RBTreeNode<T>();
 		this.root=leaf;
 		leaf.setColorBlack();
+		
 	}
 	
 	public RBTreeNode<T> getRoot() {
@@ -56,8 +57,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 			}
 		}
 		clearCopy(this.root);
-		//System.out.println(this.leaf.getColor());
-	
+		correctingLeaf();
 	
 		return true;
 	}
@@ -120,14 +120,14 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 			deleteFixUp(x);
 		}
 		this.leaf.setParent(null);
-		while (this.root.getParent() != this.leaf) {
+		while (!this.root.isLeaf && this.root.getParent() != this.leaf) {
 			this.root = (RBTreeNode<T>)this.root.getParent();
 		}
 
 	
 		clearCopy(this.root);
 	
-		
+		correctingLeaf();
 		return true;
 	}
 	
@@ -158,9 +158,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 				
 	}
 
-	
-	
-	private void clearCopy(NodeWithTwoChilds<T> current) {
+	protected void clearCopy(NodeWithTwoChilds<T> current) {
 		
 		if (current!= this.leaf && current.isCloned) {
 			current.isCloned=false;
@@ -170,7 +168,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		}
 	}
 
-	private void fixTree(NodeWithTwoChilds<T> current) throws NullPointerException {
+	protected void fixTree(NodeWithTwoChilds<T> current) throws NullPointerException {
 		NodeWithTwoChilds<T> y;
 	
 		while (current.getParent().getColor() == TREE_COLOR.RED) {
@@ -231,16 +229,12 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 					}
 					current.getParent().getParent().left_rotate(this);
 				}
-			}
-			
+			}	
 		}
-		//System.out.println("repering"+ check_sons_parent(this.root)+" "+ current.getKey());
-
 		while (this.root.getParent() != this.leaf) {
 			this.root = ((RBTreeNode<T>)this.root.getParent());
 		}
 		((RBTreeNode<T>)this.root.persistentClone(this)).setColorBlack();
-
 	}
 
 	public void print() {
@@ -306,7 +300,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 
 	}
 
-	private void transplant(NodeWithTwoChilds<T> node1, NodeWithTwoChilds<T> node2) {
+	protected void transplant(NodeWithTwoChilds<T> node1, NodeWithTwoChilds<T> node2) {
 		if (node1.getParent() == this.leaf) {
 			this.root = (RBTreeNode<T>)node2;
 		} else if (node1 == node1.getParent().getLeft()) {
@@ -317,7 +311,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		node2.persistentClone(this).setParent(node1.getParent());
 	}
 
-	private NodeWithTwoChilds<T> min_son(NodeWithTwoChilds<T> rootOfSearch) {
+	protected NodeWithTwoChilds<T> min_son(NodeWithTwoChilds<T> rootOfSearch) {
 		NodeWithTwoChilds<T> current = rootOfSearch;
 		while (current.getLeft() != this.leaf) {
 			current = current.getLeft();
@@ -325,7 +319,11 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		return current;
 	}
 
-	private void deleteFixUp(NodeWithTwoChilds<T> x) {
+	protected void correctingLeaf() {
+		leaf.left=leaf.right=leaf.parent=null;
+	}
+	
+	protected void deleteFixUp(NodeWithTwoChilds<T> x) {
 		NodeWithTwoChilds<T> w;
 		while (x != this.root && (x.getColor() == TREE_COLOR.BLACK)) {
 			if (x == x.getParent().getLeft()) {
@@ -390,7 +388,8 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 
 	@Override
 	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return new RBTreeIterator((RBTreeNode)root.min_son());
 	}
+
 }
