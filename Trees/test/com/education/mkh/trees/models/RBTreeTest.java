@@ -53,6 +53,33 @@ class RBTreeTest {
 		assertTrue(tree.checkSonsForColor(tree.getRoot()));
 		assertTrue(tree.checkNumberOfBlackNodes(tree.root)!=-1);
 	}
-	
+	@Test
+	void testDelete1() {
+		RBTree<Integer> tree=new RBTree<Integer>();
+		for (int i = 0; i < 10; i++) {
+			tree.insert(i);
+		}
+		tree.delete(4);		
+		assertTrue(tree.getRoot().getColor() == TREE_COLOR.BLACK);
+		assertTrue(tree.getLeaf().getColor() == TREE_COLOR.BLACK);
+		assertTrue(tree.checkSonsForColor(tree.getRoot()));
+		assertTrue(tree.checkNumberOfBlackNodes(tree.root)!=-1);
+	}
+	@Test
+	void testDelete2() {
+		RBTree<Integer> tree=new RBTree<Integer>();
+		for (int i = 0; i < 10; i++) {
+			tree.insert(i);
+		}
+		tree.delete(4);		
+		tree.delete(3);
+		tree.delete(8);
+		tree.delete(2);
+		tree.delete(7);	
+		assertTrue(tree.getRoot().getColor() == TREE_COLOR.BLACK);
+		assertTrue(tree.getLeaf().getColor() == TREE_COLOR.BLACK);
+		assertTrue(tree.checkSonsForColor(tree.getRoot()));
+		assertTrue(tree.checkNumberOfBlackNodes(tree.root)!=-1);
+	}
 
 }
