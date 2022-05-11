@@ -3,7 +3,7 @@ package com.education.mkh.trees.models;
 import java.util.Iterator;
 import java.util.List;
 
-public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Iterable<T>{
+public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Iterable<T> {
 	protected RBTreeNode<T> root;
 	protected RBTreeNode<T> leaf;
 	
@@ -25,7 +25,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 	
 	@Override
 	public boolean insert(T key) {
-		if (this.root == leaf) {
+		if (this.root == leaf || this.root==null) {
 			this.root = new  RBTreeNode<T>(key, this.leaf, this.leaf);
 			this.root.setColorBlack();
 			return true;
@@ -388,7 +388,9 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 
 	@Override
 	public Iterator<T> iterator() {
-		
+		if (root==null || root.isLeaf) {
+			return leaf;
+		}
 		return new RBTreeIterator((RBTreeNode)root.min_son());
 	}
 
