@@ -96,7 +96,7 @@ public abstract class NodeWithTwoChilds<T> implements PersistentClonable<T>, Ite
 	}
 	@Override
 	public boolean hasNext() {
-		if (this.right.isLeaf && (this.parent==null ||this.parent.isLeaf)) {
+		if (this==null || this.isLeaf || this.right.isLeaf && (this.parent==null ||this.parent.isLeaf)) {
 			return false;
 		}
 		return true;
