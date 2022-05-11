@@ -123,8 +123,8 @@ class BinaryTreeNode<T> extends NodeWithTwoChilds<T> {
 
 	@Override
 	public NodeWithTwoChilds<T> persistentClone(TreeFunctionable<T> tree) {
-		System.out.println("will made in future");
-		return null;
+		//System.out.println("will made in future");
+		return this;
 	}
 
 	@Override
