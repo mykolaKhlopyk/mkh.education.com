@@ -21,16 +21,24 @@
                </effect>
                <children>
                   <Canvas fx:id="canvas" height="631.0" width="1128.0" />
-                  <ImageView fx:id="clickRight" fitHeight="59.0" fitWidth="63.0" layoutX="1050.0" layoutY="557.0" visible="false">
-                     <image>
-                        <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="clickLeft" fitHeight="59.0" fitWidth="63.0" layoutX="11.0" layoutY="558.0" rotate="180.0" visible="false">
-                     <image>
-                        <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="buttonRight" layoutX="1050.0" layoutY="557.0" maxHeight="59.0" maxWidth="63.0" minHeight="59.0" minWidth="63.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="63.0" style="-fx-background-color: #58C6C7;" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="59.0" fitWidth="63.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="buttonLeft" layoutX="11.0" layoutY="558.0" maxHeight="59.0" maxWidth="63.0" minHeight="59.0" minWidth="63.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="63.0" style="-fx-background-color: #58C6C7;" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="59.0" fitWidth="63.0" rotate="180.0">
+                           <image>
+                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </Pane>
             <Pane layoutX="395.0" layoutY="30.0" prefHeight="90.0" prefWidth="1128.0" style="-fx-background-color: #58C6C7;">
@@ -64,31 +72,51 @@
                         <DropShadow />
                      </effect>
                      <children>
-                        <ImageView fx:id="clickInsert" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="8.0">
-                           <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_insert_30px.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="clickDelete" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="84.0">
-                           <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_Delete_16px.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="clickSearch" fitHeight="39.0" fitWidth="38.0" layoutX="6.0" layoutY="167.0">
-                           <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_search_24px.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="clickMakeListOutOfTrees" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="246.0">
-                           <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_more_50px.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="327.0">
-                           <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_list_24px.png" />
-                           </image>
-                        </ImageView>
+                        <Button fx:id="buttonInsert" layoutX="6.0" layoutY="8.0" maxHeight="38.0" maxWidth="38.0" minHeight="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #F59175;">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="38.0">
+                                 <image>
+                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_insert_30px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="buttonDelete" layoutX="6.0" layoutY="84.0" maxHeight="38.0" maxWidth="38.0" minHeight="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #F59175;">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="38.0">
+                                 <image>
+                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_Delete_16px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="buttonSearch" layoutX="6.0" layoutY="167.0" maxHeight="38.0" maxWidth="38.0" minHeight="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #F59175;">
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="38.0">
+                                 <image>
+                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_search_24px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="buttonToList" layoutX="6.0" layoutY="246.0" maxHeight="38.0" maxWidth="38.0" minHeight="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #F59175;">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="38.0">
+                                 <image>
+                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_more_50px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="buttonMenu" layoutX="6.0" layoutY="327.0" maxHeight="38.0" maxWidth="38.0" minHeight="38.0" minWidth="38.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #F59175;">
+                           <graphic>
+                              <ImageView fitHeight="38.0" fitWidth="38.0">
+                                 <image>
+                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_list_24px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
                   <TextField fx:id="fieldInsert" alignment="CENTER" layoutX="120.0" layoutY="7.0" prefHeight="50.0" prefWidth="213.0" promptText="Вставити" style="-fx-background-color: #F59175;">
