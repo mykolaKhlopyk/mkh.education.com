@@ -1,6 +1,7 @@
 package com.education.mkh.trees.models;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Iterable<T> {
@@ -8,11 +9,9 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 	protected RBTreeNode<T> leaf;
 	
 	public RBTree(){
-		
 		this.leaf=new RBTreeNode<T>();
 		this.root=leaf;
 		leaf.setColorBlack();
-		
 	}
 	
 	public RBTreeNode<T> getRoot() {
@@ -148,8 +147,14 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 
 	@Override
 	public List toList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<T> list=new LinkedList<T>();
+		Iterator<T> it = this.iterator();
+		while (it.hasNext()) {
+			T t = (T) it.next();
+			list.add(t);
+			System.out.println(t);
+		}
+		return list;
 	}
 
 	@Override
