@@ -89,7 +89,7 @@ public class PersistentRBTree<T extends Comparable<T>>extends RBTree<T>{
 		recursionCorrectionParent(root);
 	}
 	
-	private void recursionCorrectionParent(NodeWithTwoChilds<T> current) {
+	protected void recursionCorrectionParent(NodeWithTwoChilds<T> current) {
 		if (!current.getLeft().isLeaf) {
 			current.getLeft().setParent(current);
 			recursionCorrectionParent(current.getLeft());

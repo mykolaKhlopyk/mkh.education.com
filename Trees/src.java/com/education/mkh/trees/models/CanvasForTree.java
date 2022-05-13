@@ -10,7 +10,7 @@ public class CanvasForTree {
 	private CanvasForTree(Canvas canvas) {
 		this.canvas=canvas;
 	}
-	public CanvasForTree getInstance() {
+	public static CanvasForTree getInstance() {
 		if (instance==null) {
 			synchronized (CanvasForTree.class) {
 				if (instance==null) {
@@ -22,6 +22,7 @@ public class CanvasForTree {
 	}
 	public void setCanvas(Canvas canvas) {
 		this.canvas=canvas;
+		
 	}
 	public void setTree(TreeFunctionable tree) {
 		this.tree=tree;

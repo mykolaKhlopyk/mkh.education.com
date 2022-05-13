@@ -3,7 +3,6 @@ package application;
 import java.io.IOException;
 import java.util.Iterator;
 
-import com.education.mkh.trees.models.CommandToList;
 import com.education.mkh.trees.models.NodeWithTwoChilds;
 import com.education.mkh.trees.models.PersistentRBTree;
 import com.education.mkh.trees.models.RBTree;

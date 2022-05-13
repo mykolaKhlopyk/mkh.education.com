@@ -47,4 +47,7 @@ public class PersistentRBTreeAdapter<T extends Comparable<T>> implements Persist
 		return tree.moveLeft();
 	}
 
+	public void correctionParent() {
+		tree.recursionCorrectionParent(tree.root);
+	}
 }
