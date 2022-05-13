@@ -7,7 +7,7 @@ public class CommandMoveLeft<T> implements Command<T>{
 	}
 	
 	@Override
-	public void execute(T key) {
+	public void execute(String key) {
 		tree.moveLeft();
 	}
 }
