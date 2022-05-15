@@ -34,6 +34,7 @@ public class PersistentRBTreeAdapter<T extends Comparable<T>> implements Persist
 
 	@Override
 	public List toList() {
+		tree.recursionCorrectionParent(tree.root);
 		return tree.toList();
 	}
 
@@ -49,5 +50,9 @@ public class PersistentRBTreeAdapter<T extends Comparable<T>> implements Persist
 
 	public void correctionParent() {
 		tree.recursionCorrectionParent(tree.root);
+	}
+	@Override
+	public NodeWithTwoChilds<T> getRoot() {
+		return tree.root;
 	}
 }
