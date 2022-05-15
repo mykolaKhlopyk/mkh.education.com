@@ -52,4 +52,9 @@ public class BinaryTree <T extends Comparable<T>> implements TreeFunctionable<T>
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public NodeWithTwoChilds<T> getRoot() {
+		return this.root;
+	}
 }
