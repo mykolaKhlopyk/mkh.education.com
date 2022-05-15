@@ -149,6 +149,9 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 	public List toList() {
 		List<T> list=new LinkedList<T>();
 		Iterator<T> it = this.iterator();
+		if (it==null) {
+			return null;
+		}
 		while (it.hasNext()) {
 			T t = (T) it.next();
 			list.add(t);
@@ -394,7 +397,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 	@Override
 	public Iterator<T> iterator() {
 		if (root==null || root.isLeaf) {
-			return leaf;
+			return null;
 		}
 		return new RBTreeIterator((RBTreeNode)root.min_son());
 	}
