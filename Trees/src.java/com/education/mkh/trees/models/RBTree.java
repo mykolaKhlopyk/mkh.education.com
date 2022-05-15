@@ -90,8 +90,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 			x = z.getLeft().persistentClone(this);
 			transplant(z, z.getLeft());
 		} else {
-			y = min_son(z.getRight().persistentClone(this)).persistentClone(this);
-			System.out.println(y.getKey());
+			y = minSonWithCloningWay(z.getRight().persistentClone(this)).persistentClone(this);
 			y_color = y.getColor();
 			x=y.getRight().persistentClone(this);
 			if (y.getParent().persistentClone(this) == z) {
@@ -127,6 +126,9 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		clearCopy(this.root);
 	
 		correctingLeaf();
+		
+		
+		
 		return true;
 	}
 	
@@ -310,7 +312,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 
 	protected void transplant(NodeWithTwoChilds<T> node1, NodeWithTwoChilds<T> node2) {
 		if (node1.getParent() == this.leaf) {
-			this.root = (RBTreeNode<T>)node2;
+			this.root = (RBTreeNode<T>)node2.persistentClone(this);
 		} else if (node1 == node1.getParent().getLeft()) {
 			node1.getParent().persistentClone(this).setLeft(node2.persistentClone(this));
 		} else {
@@ -319,14 +321,23 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		node2.persistentClone(this).setParent(node1.getParent());
 	}
 
-	protected NodeWithTwoChilds<T> min_son(NodeWithTwoChilds<T> rootOfSearch) {
+	protected NodeWithTwoChilds<T> min_son1(NodeWithTwoChilds<T> rootOfSearch) {
 		NodeWithTwoChilds<T> current = rootOfSearch;
 		while (current.getLeft() != this.leaf) {
 			current = current.getLeft();
 		}
 		return current;
 	}
+	protected NodeWithTwoChilds<T> minSonWithCloningWay(NodeWithTwoChilds<T> rootOfSearch) {
+		NodeWithTwoChilds<T> current = rootOfSearch;
+		while (current.getLeft() != this.leaf) {
+			current = current.getLeft();
+			current = current.persistentClone(this);
+		}
+		return current;
+	}
 
+	
 	protected void correctingLeaf() {
 		leaf.left=leaf.right=leaf.parent=null;
 	}
@@ -335,62 +346,62 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		NodeWithTwoChilds<T> w;
 		while (x != this.root && (x.getColor() == TREE_COLOR.BLACK)) {
 			if (x == x.getParent().getLeft()) {
-				w = x.getParent().getRight();
+				w = x.getParent().getRight().persistentClone(this);
 				if (w.getColor() == TREE_COLOR.RED) {
 					((RBTreeNode<T>)w).setColorBlack();
-					((RBTreeNode<T>)x.getParent()).setColorRed();
+					((RBTreeNode<T>)x.getParent().persistentClone(this)).setColorRed();
 					x.getParent().left_rotate(this);
-					w = x.getParent().getRight();
+					w = x.getParent().getRight().persistentClone(this);
 				}
 				if (w.getLeft().getColor() == TREE_COLOR.BLACK && w.getRight().getColor() == TREE_COLOR.BLACK) {
 					((RBTreeNode<T>)w).setColorRed();
-					x = x.getParent();
+					x = x.getParent().persistentClone(this);;
 				} else if (w.getRight().getColor() == TREE_COLOR.BLACK) {
-					((RBTreeNode<T>)w.getLeft()).setColorBlack();
+					((RBTreeNode<T>)w.getLeft().persistentClone(this)).setColorBlack();
 					((RBTreeNode<T>)w).setColorRed();
 					w.right_rotate(this);
-					w = x.getParent().getRight();
+					w = x.getParent().getRight().persistentClone(this);
 				} else {
 					if (x.getParent().getColor() == TREE_COLOR.RED) {
 						((RBTreeNode<T>)w).setColorRed();
 					} else {
 						((RBTreeNode<T>)w).setColorBlack();
 					}
-					((RBTreeNode<T>)x.getParent()).setColorBlack();
-					((RBTreeNode<T>)w.getRight()).setColorBlack();
+					((RBTreeNode<T>)x.getParent().persistentClone(this)).setColorBlack();
+					((RBTreeNode<T>)w.getRight().persistentClone(this)).setColorBlack();
 					x.getParent().left_rotate(this);
-					x = this.root;
+					x = this.root.persistentClone(this);
 				}
 			} else {
-				w = x.getParent().getLeft();
+				w = x.getParent().getLeft().persistentClone(this);
 				if (w.getColor() == TREE_COLOR.RED) {
 					((RBTreeNode<T>)w).setColorBlack();
-					((RBTreeNode<T>)x.getParent()).setColorRed();
+					((RBTreeNode<T>)x.getParent().persistentClone(this)).setColorRed();
 					x.getParent().right_rotate(this);
-					w = x.getParent().getLeft();
+					w = x.getParent().getLeft().persistentClone(this);
 				}
 				if (w.getLeft().getColor() == TREE_COLOR.BLACK && w.getRight().getColor() == TREE_COLOR.BLACK) {
 					((RBTreeNode<T>)w).setColorRed();
-					x = x.getParent();
+					x = x.getParent().persistentClone(this);
 				} else if (w.getLeft().getColor() == TREE_COLOR.BLACK) {
-					((RBTreeNode<T>)w.getRight()).setColorBlack();
+					((RBTreeNode<T>)w.getRight().persistentClone(this)).setColorBlack();
 					((RBTreeNode<T>)w).setColorRed();
 					w.left_rotate(this);
-					w = x.getParent().getLeft();
+					w = x.getParent().getLeft().persistentClone(this);
 				} else {
 					if (x.getParent().getColor() == TREE_COLOR.RED) {
 						((RBTreeNode<T>)w).setColorRed();
 					} else {
 						((RBTreeNode<T>)w).setColorBlack();
 					}
-					((RBTreeNode<T>)x.getParent()).setColorBlack();
-					((RBTreeNode<T>)w.getLeft()).setColorBlack();
+					((RBTreeNode<T>)x.getParent().persistentClone(this)).setColorBlack();
+					((RBTreeNode<T>)w.getLeft().persistentClone(this)).setColorBlack();
 					x.getParent().right_rotate(this);
 					x = this.root;
 				}
 			}
 		}
-		((RBTreeNode<T>)x).setColorBlack();
+		((RBTreeNode<T>)x.persistentClone(this)).setColorBlack();
 
 	}
 
