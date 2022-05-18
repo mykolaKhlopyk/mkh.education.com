@@ -16,6 +16,7 @@ import com.education.mkh.trees.models.Observer;
 import com.education.mkh.trees.models.PersistentRBTree;
 import com.education.mkh.trees.models.PersistentRBTreeAdapter;
 import com.education.mkh.trees.models.RBTree;
+import com.education.mkh.trees.models.RationalNumber;
 import com.education.mkh.trees.models.TREES_TYPE;
 import com.education.mkh.trees.models.TreeFactory;
 import com.education.mkh.trees.models.TreeFunctionable;
@@ -87,8 +88,8 @@ public class SampleController {
 	@FXML
 	private Pane startedMenuForChosingTypeOfTree;
 
-	TreeFunctionable<Integer> tree = null;
-	TreeFactory<Integer> factory = new TreeFactory<Integer>();
+	TreeFunctionable<RationalNumber> tree = null;
+	TreeFactory<RationalNumber> factory = new TreeFactory<RationalNumber>();
 	Command command=null;
 	Alert alertError = new Alert(AlertType.ERROR);
 	ElementsForViewing elementsForViewing = new ElementsForViewing();

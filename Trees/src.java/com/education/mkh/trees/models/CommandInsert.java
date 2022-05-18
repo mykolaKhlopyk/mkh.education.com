@@ -18,8 +18,10 @@ public class CommandInsert<T>  implements Command<T>{
 			return;
 		}
 		try {	
-			int number = Integer.parseInt(key.trim());
-			if (!tree.insert(number)) {
+			//int number = Integer.parseInt(key.trim());
+			RationalNumber rn=new RationalNumber(key);
+			
+			if (!tree.insert(rn)) {
 				alertError.setHeaderText("Tree has contained this value yet");
 				alertError.showAndWait();
 			}

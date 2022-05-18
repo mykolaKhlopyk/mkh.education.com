@@ -18,8 +18,10 @@ public class CommandSearch <T>  implements Command<T>{
 			return;
 		}
 		try {	
-			int number = Integer.parseInt(key.trim());
-			if (!tree.search(number)) {
+			//int number = Integer.parseInt(key.trim());
+			RationalNumber rn=new RationalNumber(key);
+			
+			if (!tree.search(rn)) {
 				alertError.setHeaderText("Tree hasn't contained this value yet");
 				alertError.showAndWait();
 			}else {
