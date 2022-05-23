@@ -4,8 +4,7 @@ public class RationalNumber implements Comparable<RationalNumber>{
 	
 	private int numerator;
 	private int denominator;
-	private static int limit = 25;
-	
+
 	public RationalNumber() {
 		numerator=(int)(Math.random()*25);
 		denominator=(int)(Math.random()*25)+1;
