@@ -88,11 +88,11 @@ public class SampleController {
 	@FXML
 	private Pane startedMenuForChosingTypeOfTree;
 
-	TreeFunctionable<RationalNumber> tree = null;
-	TreeFactory<RationalNumber> factory = new TreeFactory<RationalNumber>();
-	Command command=null;
-	Alert alertError = new Alert(AlertType.ERROR);
-	ElementsForViewing elementsForViewing = new ElementsForViewing();
+	private TreeFunctionable<RationalNumber> tree = null;
+	private TreeFactory<RationalNumber> factory = new TreeFactory<RationalNumber>();
+	private Command command=null;
+	private Alert alertError = new Alert(AlertType.ERROR);
+	private ElementsForViewing elementsForViewing = new ElementsForViewing();
 	
 	@FXML
 	void initialize() {
