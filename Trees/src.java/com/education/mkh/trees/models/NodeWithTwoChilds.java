@@ -2,7 +2,7 @@ package com.education.mkh.trees.models;
 
 import java.util.Iterator;
 
-public abstract class NodeWithTwoChilds<T> implements PersistentClonable<T>, Iterator{
+public abstract class NodeWithTwoChilds<T> implements PersistentClonable<T>{
 	protected T key;
 	protected NodeWithTwoChilds<T> left;
 	protected NodeWithTwoChilds<T> right;
@@ -94,24 +94,7 @@ public abstract class NodeWithTwoChilds<T> implements PersistentClonable<T>, Ite
 		}
 		return current;
 	}
-	@Override
-	public boolean hasNext() {
-		if (this==null || this.isLeaf || this.right.isLeaf && (this.parent==null ||this.parent.isLeaf)) {
-			return false;
-		}
-		return true;
-	}
-	@Override
-	public Iterator next() {
-		if (!this.right.isLeaf) {
-			return this.right.min_son();
-		}
-		if (this.parent!=null && !this.parent.isLeaf) {
-			return this.parent;
-		}
-		throw new IndexOutOfBoundsException();
 
-	}
 
 }
 
