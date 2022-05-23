@@ -8,8 +8,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.TextField;
 
 public class FieldForPrintingSet implements Observer{
-	TextField mainField;
-	TreeFunctionable tree;
+	private TextField mainField;
+	private TreeFunctionable tree;
 	private volatile static FieldForPrintingSet instance;
 	private FieldForPrintingSet() {}
 	private FieldForPrintingSet(TextField mainField) {

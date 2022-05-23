@@ -10,17 +10,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class CanvasForTree implements Observer {
-	final int nodeSize = 50;
-	final int sizeBetweenNodesInY = 25;
-	final int upperBorder = 25;
-	final int fontSize = 20;
-	double preScale=1;
-	Color peach = Color.rgb(245, 145, 117);
-	Canvas canvas;
-	ArrayList<Double> scales=new ArrayList<Double>();
-	TreeFunctionable tree;
+	private final int NODE_SIZE = 50;
+	private final int SIZE_BETWEEN_NODES_IN_Y = 25;
+	private final int UPPER_BORDER = 25;
+	private final int FONT_SIZE = 20;
+	//private double preScale=1;
+	private final Color PEACH = Color.rgb(245, 145, 117);
+	private Canvas canvas;
+	private ArrayList<Double> scales=new ArrayList<Double>();
+	private TreeFunctionable tree;
 	private volatile static CanvasForTree instance;
-
 	private CanvasForTree() {
 	}
 
@@ -43,7 +42,7 @@ public class CanvasForTree implements Observer {
 		this.canvas = canvas;
 		double scale=1;
 		for (int i = 0; i < 15; i++) {
-			scale=((this.canvas.getWidth()*1.0) / Math.pow(2, i))/nodeSize;
+			scale=((this.canvas.getWidth()*1.0) / Math.pow(2, i))/NODE_SIZE;
 			if (scale>1) {
 				scales.add(1.0);
 			}else {
@@ -65,7 +64,7 @@ public class CanvasForTree implements Observer {
 		System.out.println(this.canvas.getWidth()+"width");
 		System.out.println(height+"height"+tree.getRoot().isLeaf);
 		double newSize = (this.canvas.getWidth()*1.0 / Math.pow(2, height));
-		double scale=newSize/nodeSize;
+		double scale=newSize/NODE_SIZE;
 		paintNode(tree.getRoot(), gc, 0, 0, new Point(-1, -1));
 	}
 
@@ -81,10 +80,10 @@ public class CanvasForTree implements Observer {
 		System.out.println(scales.toString());
 		double widthPerNode = canvas.getWidth() / Math.pow(2, currentHeight);
 		double xCenter = ((posX+0.5)*widthPerNode);
-		double yCenter = (nodeSize+sizeBetweenNodesInY)*(currentHeight+0.5)+upperBorder;
+		double yCenter = (NODE_SIZE+SIZE_BETWEEN_NODES_IN_Y)*(currentHeight+0.5)+UPPER_BORDER;
 		
-		double xPos = xCenter-(nodeSize*scales.get(currentHeight)/2);
-		double yPos = yCenter - nodeSize*scales.get(currentHeight)*0.5;
+		double xPos = xCenter-(NODE_SIZE*scales.get(currentHeight)/2);
+		double yPos = yCenter - NODE_SIZE*scales.get(currentHeight)*0.5;
 	
 		
 		if (posForParentStartOfBranch.x>=0) {
@@ -96,14 +95,14 @@ public class CanvasForTree implements Observer {
 		}else if (current.getColor()==TREE_COLOR.RED) {
 			gc.setFill(Color.RED);
 		}else {
-			gc.setFill(peach);
+			gc.setFill(PEACH);
 		}
 	
-		gc.fillOval(xPos, yPos, nodeSize*scales.get(currentHeight), nodeSize*scales.get(currentHeight));
+		gc.fillOval(xPos, yPos, NODE_SIZE*scales.get(currentHeight), NODE_SIZE*scales.get(currentHeight));
 		gc.setFill(Color.WHITE);
-		gc.setFont(new Font("Times New Roman", fontSize*scales.get(currentHeight)));
-		gc.fillText(current.getKey().toString(), xCenter-(current.getKey().toString().length()*5)*scales.get(currentHeight), yCenter+(0.3*fontSize*scales.get(currentHeight)));
-		Point currentBottomPoint=new Point(xCenter, yPos+nodeSize*scales.get(currentHeight));
+		gc.setFont(new Font("Times New Roman", FONT_SIZE*scales.get(currentHeight)));
+		gc.fillText(current.getKey().toString(), xCenter-(current.getKey().toString().length()*5)*scales.get(currentHeight), yCenter+(0.3*FONT_SIZE*scales.get(currentHeight)));
+		Point currentBottomPoint=new Point(xCenter, yPos+NODE_SIZE*scales.get(currentHeight));
 		if (!current.getLeft().isLeaf) {
 			paintNode(current.getLeft(), gc, currentHeight+1, posX*2, currentBottomPoint);
 		}

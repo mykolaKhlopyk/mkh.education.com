@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BinaryTree <T extends Comparable<T>> implements TreeFunctionable<T>, Iterable<T>{
-	BinaryTreeNode<T> root;
-	BinaryTreeNode<T> leaf;
+	protected BinaryTreeNode<T> root;
+	protected BinaryTreeNode<T> leaf;
 	
 	public BinaryTree(){
 		this.leaf=new BinaryTreeNode<T>(null, null);

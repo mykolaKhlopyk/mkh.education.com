@@ -4,7 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class CommandDelete<T>  implements Command<T>{
-	TreeFunctionable tree;
+	private TreeFunctionable tree;
 	public CommandDelete(TreeFunctionable<T> tree) {
 		this.tree=tree;
 	}

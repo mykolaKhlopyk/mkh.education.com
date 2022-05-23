@@ -3,7 +3,7 @@ package com.education.mkh.trees.models;
 import java.util.Iterator;
 
 public class RBTreeIterator<T extends Comparable<T>> implements Iterator<T> {
-	NodeWithTwoChilds<T> current;
+	private NodeWithTwoChilds<T> current;
 
 	RBTreeIterator(RBTreeNode<T> first) {
 		this.current = first;

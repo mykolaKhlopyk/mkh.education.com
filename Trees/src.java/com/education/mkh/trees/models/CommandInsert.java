@@ -4,7 +4,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
 public class CommandInsert<T>  implements Command<T>{
-	TreeFunctionable tree;
+	private TreeFunctionable tree;
 	public CommandInsert(TreeFunctionable<T> tree) {
 		this.tree=tree;
 	}
