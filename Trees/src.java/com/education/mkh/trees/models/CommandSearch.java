@@ -28,6 +28,8 @@ public class CommandSearch <T>  implements Command<T>{
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Searching");
 				alert.setHeaderText("Contains");
+				alert.showAndWait();
+
 			}
 			
 		}catch (Exception e) {

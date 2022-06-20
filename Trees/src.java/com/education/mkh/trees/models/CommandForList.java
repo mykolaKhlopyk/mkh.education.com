@@ -1,5 +1,8 @@
 package com.education.mkh.trees.models;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 import javafx.scene.control.Alert;
@@ -26,8 +29,12 @@ public class CommandForList<T> implements Command<T> {
 			List list = tree.toList();
 			elem.registerObserver(FieldForPrintingSet.getInstance());
 			elem.notifyObservers();
+			
 			but.setText("Без списку");
-		}else{
+		} else {
+			
+			
+
 			elem.removeObserver(FieldForPrintingSet.getInstance());
 			FieldForPrintingSet.getInstance().setEmpty();
 			but.setText("У список");
