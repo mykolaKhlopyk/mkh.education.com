@@ -25,7 +25,7 @@
                      <graphic>
                         <ImageView fitHeight="59.0" fitWidth="63.0">
                            <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
+                              <Image url="@../img/icons8_right_24px_1.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -34,7 +34,7 @@
                      <graphic>
                         <ImageView fitHeight="59.0" fitWidth="63.0" rotate="180.0">
                            <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_right_24px.png" />
+                              <Image url="@../img/icons8_right_24px_1.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -76,7 +76,7 @@
                            <graphic>
                               <ImageView fitHeight="38.0" fitWidth="38.0">
                                  <image>
-                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_insert_30px.png" />
+                                    <Image url="@../img/icons8_insert_30px.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -85,7 +85,7 @@
                            <graphic>
                               <ImageView fitHeight="38.0" fitWidth="38.0">
                                  <image>
-                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_Delete_16px.png" />
+                                    <Image url="@../img/icons8_Delete_16px.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -94,7 +94,7 @@
                            <graphic>
                               <ImageView fitHeight="39.0" fitWidth="38.0">
                                  <image>
-                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_search_24px.png" />
+                                    <Image url="@../img/icons8_search_32px.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -103,7 +103,7 @@
                            <graphic>
                               <ImageView fitHeight="38.0" fitWidth="38.0">
                                  <image>
-                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_more_50px.png" />
+                                    <Image url="@../img/icons8_horizontal_line_24px.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -112,7 +112,7 @@
                            <graphic>
                               <ImageView fitHeight="38.0" fitWidth="38.0">
                                  <image>
-                                    <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_list_24px.png" />
+                                    <Image url="@../img/icons8_Menu_50px.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -242,7 +242,7 @@
                      <children>
                         <ImageView fx:id="clickChooseTreeStartMenu" fitHeight="38.0" fitWidth="38.0" layoutX="6.0" layoutY="8.0">
                            <image>
-                              <Image url="@../../../../../Users/User/AppData/Local/Temp/icons8_list_24px.png" />
+                              <Image url="@../img/icons8_Menu_50px.png" />
                            </image>
                         </ImageView>
                      </children>
