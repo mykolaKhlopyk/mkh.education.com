@@ -1,5 +1,8 @@
 package com.education.mkh.trees.models;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,21 +49,17 @@ public class FieldForPrintingSet implements Observer {
 			mainField.setText("Set is empty");
 			return;
 		}
-		String result="";
-		//Runnable r = () -> {
-			List list = tree.toList();
-			if (list == null || list.isEmpty()) {
-				result="Set is empty";
-				//mainField.setText("Set is empty");
-			} else {
-				result = list.toString();
-				//mainField.setText(list.toString());
-			}
-			synchronized (mainField) {
-				mainField.setText(result);
-			}
-		//};
-		//new Thread(r).start();
+		String result = "";
+		List list = tree.toList();
+		if (list == null || list.isEmpty()) {
+			result = "Set is empty";
+		} else {
+			result = list.toString();
+		}
+
+		mainField.setText(result);
+
+		
 	}
 
 	void setEmpty() {
