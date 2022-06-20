@@ -27,7 +27,11 @@ public class ElementsForViewing implements Subject{
 		Iterator<Observer> it=observers.iterator();
 		while (it.hasNext()) {
 			Observer observer = (Observer) it.next();
-			observer.update(tree);			
+			//Runnable r=()->{
+				observer.update(tree);
+			//};
+			//new Thread(r).start();
+					
 		}
 	}
 

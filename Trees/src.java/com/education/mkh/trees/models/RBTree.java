@@ -328,6 +328,7 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		}
 		return current;
 	}
+	
 	protected NodeWithTwoChilds<T> minSonWithCloningWay(NodeWithTwoChilds<T> rootOfSearch) {
 		NodeWithTwoChilds<T> current = rootOfSearch;
 		while (current.getLeft() != this.leaf) {
@@ -337,7 +338,6 @@ public class RBTree<T extends Comparable<T>> implements TreeFunctionable<T>, Ite
 		return current;
 	}
 
-	
 	protected void correctingLeaf() {
 		leaf.left=leaf.right=leaf.parent=null;
 	}

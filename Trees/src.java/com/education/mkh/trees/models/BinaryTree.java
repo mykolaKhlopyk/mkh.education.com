@@ -14,7 +14,7 @@ public class BinaryTree <T extends Comparable<T>> implements TreeFunctionable<T>
 
 	@Override
 	public boolean insert(T key) {
-	
+		// TODO Auto-generated method stub
 		return true;
 	}
 
