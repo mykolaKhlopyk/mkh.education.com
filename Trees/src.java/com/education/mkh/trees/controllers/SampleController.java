@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.education.mkh.trees.models.CanvasForTree;
 import com.education.mkh.trees.models.Command;
+import com.education.mkh.trees.models.CommandChangeTree;
 import com.education.mkh.trees.models.CommandDelete;
+import com.education.mkh.trees.models.CommandForList;
 import com.education.mkh.trees.models.CommandInsert;
 import com.education.mkh.trees.models.CommandMoveLeft;
 import com.education.mkh.trees.models.CommandMoveRight;
@@ -90,21 +92,18 @@ public class SampleController {
 
 	private TreeFunctionable<RationalNumber> tree = null;
 	private TreeFactory<RationalNumber> factory = new TreeFactory<RationalNumber>();
-	private Command command=null;
+	private Command command = null;
 	private Alert alertError = new Alert(AlertType.ERROR);
 	private ElementsForViewing elementsForViewing = new ElementsForViewing();
-	
+
 	@FXML
 	void initialize() {
-		
-		
-		
+
 		CanvasForTree.getInstance().setCanvas(canvas);
 		FieldForPrintingSet.getInstance().setTextField(fieldForPrintingSet);
 		elementsForViewing.registerObserver(CanvasForTree.getInstance());
-		elementsForViewing.registerObserver(FieldForPrintingSet.getInstance());
-		
-		
+		//elementsForViewing.registerObserver(FieldForPrintingSet.getInstance());
+
 		buttonChooseTreeInStartMenu.setOnAction(event -> {
 			if (menuChoosingTreesStartMenu.isVisible())
 				menuChoosingTreesStartMenu.setVisible(false);
@@ -125,60 +124,58 @@ public class SampleController {
 		buttonChoosePersistentRBTree1.setOnAction(event -> gotoTreesTasksMenu_Persistent());
 
 		buttonInsert.setOnAction(event -> {
-			command=new CommandInsert(tree);
+			command = new CommandInsert(tree);
 			command.execute(fieldInsert.getText());
 			fieldInsert.clear();
 			elementsForViewing.notifyObservers();
 		});
 		fieldInsert.setOnAction(event -> {
-			command=new CommandInsert(tree);
+			command = new CommandInsert(tree);
 			command.execute(fieldInsert.getText());
 			fieldInsert.clear();
 			elementsForViewing.notifyObservers();
 		});
-		
+
 		buttonDelete.setOnAction(event -> {
-			command=new CommandDelete(tree);
+			command = new CommandDelete(tree);
 			command.execute(fieldDelete.getText());
 			fieldDelete.clear();
 			elementsForViewing.notifyObservers();
 		});
 		fieldDelete.setOnAction(event1 -> {
-			command=new CommandDelete(tree);
+			command = new CommandDelete(tree);
 			command.execute(fieldDelete.getText());
 			fieldDelete.clear();
 			elementsForViewing.notifyObservers();
 		});
-		
+
 		buttonSearch.setOnAction(event -> {
-			command=new CommandSearch(tree);
+			command = new CommandSearch(tree);
 			command.execute(fieldSearch.getText());
 			fieldSearch.clear();
 		});
-		
+
 		fieldSearch.setOnAction(event -> {
-			command=new CommandSearch(tree);
+			command = new CommandSearch(tree);
 			command.execute(fieldSearch.getText());
 			fieldSearch.clear();
 		});
-		
-		buttonMakeListOutOfTree.setOnAction(event ->{
-			if (tree instanceof PersistentRBTreeAdapter) {
-				((PersistentRBTreeAdapter) tree).correctionParent();
-			}
-			List list = tree.toList();
-			this.fieldForPrintingSet.setText(list.toString());
+
+		buttonMakeListOutOfTree.setOnAction(event -> {
+			command = new CommandForList(tree, buttonMakeListOutOfTree, elementsForViewing);
+			command.execute(fieldSearch.getText());
+			//this.fieldForPrintingSet.setText(list.toString());
 		});
-		
-		buttonRight.setOnAction(event->{
-			PersistentRBTreeAdapter treePer=(PersistentRBTreeAdapter)tree;
-			command=new CommandMoveRight(treePer);
+
+		buttonRight.setOnAction(event -> {
+			PersistentRBTreeAdapter treePer = (PersistentRBTreeAdapter) tree;
+			command = new CommandMoveRight(treePer);
 			command.execute(null);
 			elementsForViewing.notifyObservers();
 		});
-		buttonLeft.setOnAction(event->{
-			PersistentRBTreeAdapter treePer=(PersistentRBTreeAdapter)tree;
-			command=new CommandMoveLeft(treePer);
+		buttonLeft.setOnAction(event -> {
+			PersistentRBTreeAdapter treePer = (PersistentRBTreeAdapter) tree;
+			command = new CommandMoveLeft(treePer);
 			command.execute(null);
 			elementsForViewing.notifyObservers();
 		});
@@ -186,35 +183,26 @@ public class SampleController {
 
 	private void gotoTreesTasksMenu_Binary() {
 		tree = factory.createTree(TREES_TYPE.BINARY_TREE);
-		elementsForViewing.setTree(tree);
-		menuTitle.setText("Бінарне д.");
-		menuWithTreeTasks.toFront();
-		menuChoosingInkTreeInTasksPane.setVisible(false);
-		buttonRight.setVisible(false);		
-		buttonLeft.setVisible(false);
+		command = new CommandChangeTree(tree, elementsForViewing, menuTitle, menuWithTreeTasks,
+				menuChoosingInkTreeInTasksPane, buttonLeft, buttonRight, CanvasForTree.getInstance());
+		command.execute(null);
 		
 	}
 
 	private void gotoTreesTasksMenu_RB() {
 		tree = factory.createTree(TREES_TYPE.RB_TREE);
-		elementsForViewing.setTree(tree);
-		menuTitle.setText("Червоно-чорне д.");
-		menuWithTreeTasks.toFront();
-		menuChoosingInkTreeInTasksPane.setVisible(false);
-		buttonRight.setVisible(false);		
-		buttonLeft.setVisible(false);
+		command = new CommandChangeTree(tree, elementsForViewing, menuTitle, menuWithTreeTasks,
+				menuChoosingInkTreeInTasksPane, buttonLeft, buttonRight, CanvasForTree.getInstance());
+		command.execute(null);
+		
 	}
 
 	private void gotoTreesTasksMenu_Persistent() {
 		tree = factory.createTree(TREES_TYPE.PERSISTENT_RB_TREE);
-		elementsForViewing.setTree(tree);
-		menuTitle.setText("Персистентне ч-ч д.");
-		menuWithTreeTasks.toFront();
-		menuChoosingInkTreeInTasksPane.setVisible(false);
-		buttonRight.setVisible(true);		
-		buttonLeft.setVisible(true);
+		command = new CommandChangeTree(tree, elementsForViewing, menuTitle, menuWithTreeTasks,
+				menuChoosingInkTreeInTasksPane, buttonLeft, buttonRight, CanvasForTree.getInstance());
+		command.execute(null);
 		
 	}
 
-	
 }
