@@ -22,6 +22,7 @@ import com.education.mkh.trees.models.RationalNumber;
 import com.education.mkh.trees.models.TREES_TYPE;
 import com.education.mkh.trees.models.TreeFactory;
 import com.education.mkh.trees.models.TreeFunctionable;
+import com.education.mkh.trees.models.WritingInFile;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -95,13 +96,15 @@ public class SampleController {
 	private Command command = null;
 	private Alert alertError = new Alert(AlertType.ERROR);
 	private ElementsForViewing elementsForViewing = new ElementsForViewing();
-
+	private WritingInFile writingInFile= new WritingInFile();
+	
 	@FXML
 	void initialize() {
 
 		CanvasForTree.getInstance().setCanvas(canvas);
 		FieldForPrintingSet.getInstance().setTextField(fieldForPrintingSet);
 		elementsForViewing.registerObserver(CanvasForTree.getInstance());
+		elementsForViewing.registerObserver(writingInFile);
 		//elementsForViewing.registerObserver(FieldForPrintingSet.getInstance());
 
 		buttonChooseTreeInStartMenu.setOnAction(event -> {
